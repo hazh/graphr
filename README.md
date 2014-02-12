@@ -17,8 +17,11 @@ Input should use the following format:
 
 #### Operations ####
 
+- "define"        : self.set_variable,
 - "diff"          : sympy.diff,
-- "integrate"     : sympy.integrate,
+- "dsolve"        : sympy.dsolve,
 - "exit"          : exits graphr (0 arguments required),
+- "integrate"     : sympy.integrate,
+- "limit"         : sympy.limit,
 - "plot"          : sympy.plotting.plot,
 - "solve"         : sympy.solve,

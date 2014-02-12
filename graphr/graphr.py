@@ -1,5 +1,4 @@
 import sympy
-from sympy.parsing.sympy_parser import parse_expr
 import sympy.plotting
 import inspect
 
@@ -12,12 +11,16 @@ class Graphr:
             "prompt"        : "graphr => ",
         }
         self.operations = {
+            "define"        : self.set_variable,        
             "diff"          : sympy.diff,
-            "integrate"     : sympy.integrate,
+            "dsolve"        : sympy.dsolve,
             "exit"          : self.exit,
+            "integrate"     : sympy.integrate,
+            "limit"         : sympy.limit,
             "plot"          : sympy.plotting.plot,
             "solve"         : sympy.solve,
         }
+        self.names = {}
 
     def run(self):
         self.running = True
@@ -31,6 +34,10 @@ class Graphr:
         command = input_list.pop(0)
         if command in self.operations:
             operation = self.operations[command]
+            #find if input term is a defined variable and if so replace it in the input list
+            for i, item in enumerate(input_list):
+                if item in self.names:
+                    input_list[i] = self.names[item]            
             try:
                 ans = operation(*input_list)
                 print ans
@@ -45,6 +52,10 @@ class Graphr:
         input_string = raw_input(self.settings["prompt"]).lower()
         input_list = input_string.split(" ")
         return input_list
+
+    def set_variable(self, name, value):
+        self.names.update({name: value})
+        return "Set variable '%s' to value '%s'." % (name, value)
 
     def exit(self):
         self.running = False
