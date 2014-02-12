@@ -20,4 +20,5 @@ Input should use the following format:
 - "diff"          : sympy.diff,
 - "integrate"     : sympy.integrate,
 - "exit"          : exits graphr (0 arguments required),
+- "plot"          : sympy.plotting.plot,
 - "solve"         : sympy.solve,

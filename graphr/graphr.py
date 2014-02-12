@@ -1,5 +1,6 @@
 import sympy
 from sympy.parsing.sympy_parser import parse_expr
+import sympy.plotting
 import inspect
 
 x = sympy.symbols("x")
@@ -14,7 +15,8 @@ class Graphr:
             "diff"          : sympy.diff,
             "integrate"     : sympy.integrate,
             "exit"          : self.exit,
-            "solve"         : sympy.solve
+            "plot"          : sympy.plotting.plot,
+            "solve"         : sympy.solve,
         }
 
     def run(self):
