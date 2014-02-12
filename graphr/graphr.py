@@ -14,6 +14,7 @@ class Graphr:
             "diff"          : sympy.diff,
             "integrate"     : sympy.integrate,
             "exit"          : self.exit,
+            "solve"         : sympy.solve
         }
 
     def run(self):
